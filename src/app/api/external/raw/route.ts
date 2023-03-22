@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { handleRequest } from '../request';
-import { handleError } from '../../error';
+import { handleError } from '../../errors';
 
 export async function POST(request: Request) {
   try {
