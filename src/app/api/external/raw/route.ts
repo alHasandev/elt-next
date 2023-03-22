@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import loader from '../../loader';
-import { handleError } from '../../error';
 import { handleRequest } from '../request';
+import { handleError } from '../../error';
 
 export async function POST(request: Request) {
   try {
@@ -13,6 +12,9 @@ export async function POST(request: Request) {
 
     return NextResponse.json(response.dataset);
   } catch (error) {
-    return NextResponse.json(handleError(error));
+    const err = handleError(error);
+    return NextResponse.json(err, {
+      status: err.status,
+    });
   }
 }
